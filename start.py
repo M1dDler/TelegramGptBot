@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from telebot.async_telebot import AsyncTeleBot
 from chatGPT import chatGPT
+from background import keep_alive
 
 load_dotenv()    
 token = os.getenv('BOTTOKEN')
@@ -20,4 +21,5 @@ async def getQuestion(message):
     answer = await chatGPT(message.text)
     await bot.send_message(message.from_user.id, answer)
     
+keep_alive()
 asyncio.run(bot.infinity_polling())
