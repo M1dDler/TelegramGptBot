@@ -11,6 +11,7 @@ bot = AsyncTeleBot(token)
 
 @bot.message_handler(commands=['start'])
 async def sendWelcome(message):
+    print(message)
     await bot.send_message(message.from_user.id, 'Nice to meet you! 😇 \n' +
                            'Write me some questions and i’ll try to give you answers 😅')
 
